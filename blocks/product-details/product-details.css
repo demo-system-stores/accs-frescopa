@@ -127,3 +127,84 @@
   overflow: hidden;
   white-space: nowrap;
 }
+
+main .product-details {
+  --frescopa-maroon: #5c1a1f;
+  --frescopa-maroon-dark: #43121a;
+  --frescopa-gold: #e9a23b;
+  --frescopa-cream: #f8f1e7;
+  --frescopa-text: #4a3a36;
+  --frescopa-serif: georgia, 'Times New Roman', serif;
+}
+
+main .product-details .product-details__gallery {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 280px;
+  padding: 24px;
+  border-radius: 20px;
+  background-color: var(--frescopa-cream);
+  overflow: hidden;
+}
+
+main .product-details .product-details__gallery .pdp-product-gallery__stack {
+  width: 100%;
+}
+
+main .product-details .product-details__gallery .pdp-carousel,
+main .product-details .product-details__gallery .pdp-carousel__wrapper {
+  align-items: center;
+  justify-content: safe center; /* safe: multi-image sliders overflow and must start at the first slide */
+}
+
+main .product-details .product-details__right-column {
+  color: var(--frescopa-text);
+}
+
+main .product-details .pdp-header__title {
+  font-family: var(--frescopa-serif);
+  font-size: 3rem;
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--frescopa-maroon);
+}
+
+main .product-details .pdp-header__sku {
+  font-size: 1.3rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+main .product-details .product-details__price .dropin-price {
+  font-size: 2.4rem;
+  color: var(--frescopa-maroon);
+}
+
+main .product-details .product-details__buttons__add-to-cart .dropin-button--primary {
+  border-color: var(--frescopa-maroon);
+  background-color: var(--frescopa-maroon);
+  color: #fff;
+}
+
+main .product-details .product-details__buttons__add-to-cart .dropin-button--primary:hover,
+main .product-details .product-details__buttons__add-to-cart .dropin-button--primary:focus-visible {
+  border-color: var(--frescopa-gold);
+  background-color: var(--frescopa-gold);
+  color: var(--frescopa-maroon-dark);
+}
+
+@media (min-width: 900px) {
+  main .product-details .product-details__gallery {
+    min-height: 480px;
+    padding: 32px;
+  }
+
+  main .product-details .product-details__right-column .product-details__gallery {
+    display: none;
+  }
+
+  main .product-details .pdp-header__title {
+    font-size: 4.2rem;
+  }
+}
