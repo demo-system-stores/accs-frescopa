@@ -903,3 +903,61 @@ body:has(.seller-assisted-buying-banner) {
     display: inline-block;
   }
 }
+
+body header {
+  --frescopa-maroon: #5c1a1f;
+  --frescopa-cream: #f8f1e7;
+}
+
+body header nav .nav-brand img {
+  display: block;
+}
+
+/* stylelint-disable no-descending-specificity */
+body header nav .nav-sections .default-content-wrapper > ul > li > p > a:any-link,
+body header nav .nav-sections .authCombineNavElement button {
+  font: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+}
+
+body header nav .nav-sections ul > li ul > li a:any-link {
+  color: inherit;
+}
+/* stylelint-enable no-descending-specificity */
+
+@media (min-width: 900px) {
+  body header nav .nav-brand img {
+    width: auto;
+    height: 38px;
+  }
+
+  body header nav .nav-sections .default-content-wrapper > ul > li ul > li a:any-link,
+  body header nav .nav-sections .authCombineNavElement button {
+    font: var(--type-body-2-strong-font);
+    letter-spacing: var(--type-body-2-strong-letter-spacing);
+  }
+
+  body header nav .nav-sections .default-content-wrapper > ul > li,
+  body header nav .nav-sections .nav-drop {
+    border-radius: var(--shape-border-radius-2);
+    padding: var(--spacing-xsmall) var(--spacing-small);
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  body header nav .nav-sections .default-content-wrapper > ul > li ul {
+    color: var(--color-neutral-800);
+  }
+
+  body header nav .nav-sections .default-content-wrapper > ul > li:hover,
+  body header nav .nav-sections .nav-drop[aria-expanded='true'] {
+    background-color: var(--frescopa-cream);
+    color: var(--frescopa-maroon);
+  }
+
+  body header nav .nav-sections .default-content-wrapper > ul > li ul > li a:hover,
+  body header nav .nav-sections .authCombineNavElement button:hover {
+    color: var(--frescopa-maroon);
+    text-decoration: none;
+  }
+}
