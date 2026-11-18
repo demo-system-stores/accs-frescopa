@@ -17,6 +17,7 @@ import { events } from '@dropins/tools/event-bus.js';
 // AEM
 import { readBlockConfig } from '../../scripts/aem.js';
 import { fetchPlaceholders, getProductLink } from '../../scripts/commerce.js';
+import { normalizeAemAssetUrl } from '../../scripts/aem-assets.js';
 import { getSearchStateFromUrl, applySearchStateToUrl } from './search-url.js';
 
 // Initializers
@@ -162,9 +163,22 @@ export default async function decorate(block) {
           anchorWrapper.href = getProductLink(product.urlKey, product.sku);
           anchorWrapper.setAttribute('aria-label', product.name || product.sku);
 
+          if (!defaultImageProps.src) {
+            console.warn(`No product image available for SKU "${product.sku}"`);
+            const placeholder = document.createElement('span');
+            placeholder.className = 'product-list-page__image-placeholder';
+            placeholder.textContent = product.name || product.sku;
+            anchorWrapper.appendChild(placeholder);
+            ctx.replaceWith(anchorWrapper);
+            return;
+          }
+
           tryRenderAemAssetsImage(ctx, {
             alias: product.sku,
-            imageProps: defaultImageProps,
+            imageProps: {
+              ...defaultImageProps,
+              src: normalizeAemAssetUrl(defaultImageProps.src),
+            },
             wrapper: anchorWrapper,
             params: {
               width: defaultImageProps.width,

@@ -81,6 +81,17 @@
     gap: var(--spacing-xxsmall);
 }
 
+.block.product-list-page .product-list-page__image-placeholder {
+    display: grid;
+    place-items: center;
+    /* stylelint-disable-next-line custom-property-pattern -- Names supplied by the drop-in. */
+    aspect-ratio: var(--imageWidth, 400) / var(--imageHeight, 450);
+    width: 100%;
+    background-color: var(--color-neutral-200);
+    color: var(--color-neutral-800);
+    text-align: center;
+}
+
 /* Empty State */
 
 .block.product-list-page.product-list-page--empty .search__wrapper {

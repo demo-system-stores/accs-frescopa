@@ -24,6 +24,7 @@ import ProductDescription from '@dropins/storefront-pdp/containers/ProductDescri
 import ProductAttributes from '@dropins/storefront-pdp/containers/ProductAttributes.js';
 import ProductGallery from '@dropins/storefront-pdp/containers/ProductGallery.js';
 import ProductGiftCardOptions from '@dropins/storefront-pdp/containers/ProductGiftCardOptions.js';
+import { normalizeAemAssetUrl } from '../../scripts/aem-assets.js';
 
 // Libs
 import {
@@ -567,7 +568,10 @@ function imageSlotConfig(ctx) {
   const { data, defaultImageProps } = ctx;
   return {
     alias: data.sku,
-    imageProps: defaultImageProps,
+    imageProps: {
+      ...defaultImageProps,
+      src: normalizeAemAssetUrl(defaultImageProps.src),
+    },
 
     params: {
       width: defaultImageProps.width,
